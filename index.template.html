@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Meus e-leilões</title>
+		<link rel="stylesheet" href="./index.css" />
+		<script>
+			function getParameterByName(name, url = window.location.href) {
+				name = name.replace(/[\[\]]/g, '\\$&');
+				var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+					results = regex.exec(url);
+				if (!results) return null;
+				if (!results[2]) return '';
+				return decodeURIComponent(results[2].replace(/\+/g, ' '));
+			}
+			function setHtmlValue(tagId, value) {
+				document.getElementById(tagId).value = value ? value : '';
+			}
+			function getHtmlValue(tagId, value) {
+				return document.getElementById(tagId).value;
+			}
+			function runAtStart() {
+				var coll = document.getElementsByClassName('collapsible');
+				var i;
+
+				for (i = 0; i < coll.length; i++) {
+					coll[i].addEventListener('click', function () {
+						this.classList.toggle('active');
+						var content = this.nextElementSibling;
+						if (content.style.display === 'grid') {
+							content.style.display = 'none';
+						} else {
+							content.style.display = 'grid';
+						}
+					});
+				}
+				const searchPattern = getParameterByName('search');
+				setHtmlValue('search', searchPattern);
+				const radius = getParameterByName('radius');
+				setHtmlValue('radius', radius);
+				const orderBy = getParameterByName('order');
+				setHtmlValue('order', orderBy ? orderBy : 'start');
+
+				document
+					.getElementById('searchButton')
+					.addEventListener('click', function () {
+						const searchPattern = getHtmlValue('search');
+						const radius = getHtmlValue('radius');
+						const orderBy = getHtmlValue('order');
+						const params = [];
+						searchPattern && params.push(`search=${searchPattern}`);
+						radius && params.push(`radius=${radius}`);
+						orderBy && params.push(`order=${orderBy}`);
+						let url =
+							window.location.href.split('index.html')[0] + 'index.html';
+						if (params.length !== 0) {
+							url += '?' + params.join('&');
+						}
+						window.location.href = url;
+					});
+
+				console.log(searchPattern, radius, orderBy);
+			}
+		</script>
+	</head>
+	<body onload="runAtStart()">
+		<div class="container">
+			<h1>Meu e-leilões ({ENTRY_COUNT})</h1>
+			<div class="headerFilter">
+				<div>
+					<b>Procura:</b>
+					<input id="search" />
+				</div>
+				<div>
+					<b>Distancia:</b>
+					<input id="radius" />
+				</div>
+				<div>
+					<b>Ordernar por:</b>
+					<select name="orderBy" id="order">
+						<option value="start">Inicio de leilão</option>
+						<option value="end">Fim de leilão</option>
+						<option value="dist">Distancia</option>
+						<option value="value">Valor</option>
+					</select>
+				</div>
+				<button id="searchButton">Pesquisar</button>
+			</div>
+			<div>
+				<!-- TEMPLATE ENTRY -->
+				<div class="entry">
+					<div class="title">
+						<a href="{ENTRY_LINK}"><h3>{ENTRY_NAME}</h3></a>
+						<div class="summary">
+							<div>
+								<b>{ENTRY_CAT}</b>
+							</div>
+							<div>
+								<b>Distancia:</b>
+								<div class="bigDetail" style="color:{DIST_COLOR};">
+									{ENTRY_CURRENT_DIST} km
+								</div>
+							</div>
+							<div>
+								<b>Lance actual:</b>
+								<div class="bigDetail">{ENTRY_CURRENT_VALUE} €</div>
+							</div>
+						</div>
+					</div>
+					<div class="images">
+						<!-- TEMPLATE IMAGE -->
+						<a href="{ENTRY_LINK}">
+							<div class="image">
+								<img src="{ENTRY_IMG}" alt="{ENTRY_NAME}" />
+							</div>
+						</a>
+						<!-- TEMPLATE IMAGE -->
+					</div>
+					<div class="details">
+						<div><b>Description:</b></div>
+						<div>{ENTRY_DESCRIPTION}</div>
+					</div>
+					<button type="button" class="collapsible">Detalhes</button>
+					<div class="superDetails">
+						<!-- TEMPLATE DETAILS -->
+						<div>
+							<div><b>{DETAIL_NAME}</b></div>
+							<div>{DETAIL_VALUE}</div>
+						</div>
+						<!-- TEMPLATE DETAILS -->
+					</div>
+				</div>
+				<!-- TEMPLATE ENTRY -->
+			</div>
+		</div>
+	</body>
+</html>

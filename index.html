@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Meus e-leilões</title>
+		<link rel="stylesheet" href="./index.css" />
+		<script>
+			function getParameterByName(name, url = window.location.href) {
+				name = name.replace(/[\[\]]/g, '\\$&');
+				var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+					results = regex.exec(url);
+				if (!results) return null;
+				if (!results[2]) return '';
+				return decodeURIComponent(results[2].replace(/\+/g, ' '));
+			}
+			function setHtmlValue(tagId, value) {
+				document.getElementById(tagId).value = value ? value : '';
+			}
+			function getHtmlValue(tagId, value) {
+				return document.getElementById(tagId).value;
+			}
+			function runAtStart() {
+				var coll = document.getElementsByClassName('collapsible');
+				var i;
+
+				for (i = 0; i < coll.length; i++) {
+					coll[i].addEventListener('click', function () {
+						this.classList.toggle('active');
+						var content = this.nextElementSibling;
+						if (content.style.display === 'grid') {
+							content.style.display = 'none';
+						} else {
+							content.style.display = 'grid';
+						}
+					});
+				}
+				const searchPattern = getParameterByName('search');
+				setHtmlValue('search', searchPattern);
+				const radius = getParameterByName('radius');
+				setHtmlValue('radius', radius);
+				const orderBy = getParameterByName('order');
+				setHtmlValue('order', orderBy ? orderBy : 'start');
+
+				document
+					.getElementById('searchButton')
+					.addEventListener('click', function () {
+						const searchPattern = getHtmlValue('search');
+						const radius = getHtmlValue('radius');
+						const orderBy = getHtmlValue('order');
+						const params = [];
+						searchPattern && params.push(`search=${searchPattern}`);
+						radius && params.push(`radius=${radius}`);
+						orderBy && params.push(`order=${orderBy}`);
+						let url =
+							window.location.href.split('index.html')[0] + 'index.html';
+						if (params.length !== 0) {
+							url += '?' + params.join('&');
+						}
+						window.location.href = url;
+					});
+
+				console.log(searchPattern, radius, orderBy);
+			}
+		</script>
+	</head>
+	<body onload="runAtStart()">
+		<div class="container">
+			<h1>Meu e-leilões (6)</h1>
+			<div class="headerFilter">
+				<div>
+					<b>Procura:</b>
+					<input id="search" />
+				</div>
+				<div>
+					<b>Distancia:</b>
+					<input id="radius" />
+				</div>
+				<div>
+					<b>Ordernar por:</b>
+					<select name="orderBy" id="order">
+						<option value="start">Inicio de leilão</option>
+						<option value="end">Fim de leilão</option>
+						<option value="dist">Distancia</option>
+						<option value="value">Valor</option>
+					</select>
+				</div>
+				<button id="searchButton">Pesquisar</button>
+			</div>
+			<div>
+				<!-- TEMPLATE ENTRY -->
+				<div class="entry">
+					<div class="title">
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1016652022"><h3>Prédio Rústico composto por terreno de cultura</h3></a>
+						<div class="summary">
+							<div>
+								<b>Imóvel</b>
+							</div>
+							<div>
+								<b>Distancia:</b>
+								<div class="bigDetail" style="color:rgb(69, 118, 27);">
+									5.1 km
+								</div>
+							</div>
+							<div>
+								<b>Lance actual:</b>
+								<div class="bigDetail">125 €</div>
+							</div>
+						</div>
+					</div>
+					<div class="images">
+						<!-- TEMPLATE IMAGE -->
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1016652022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_89676/10112022182005_800.jpg" alt="Prédio Rústico composto por terreno de cultura" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1016652022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_89676/10112022182111_800.jpg" alt="Prédio Rústico composto por terreno de cultura" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1016652022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_89676/10112022182114_800.jpg" alt="Prédio Rústico composto por terreno de cultura" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1016652022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_89676/10112022182118_800.jpg" alt="Prédio Rústico composto por terreno de cultura" />
+							</div>
+						</a>
+						<!-- TEMPLATE IMAGE -->
+					</div>
+					<div class="details">
+						<div><b>Description:</b></div>
+						<div>Prédio rústico composto de terreno de cultura, com área de 50,00 m2, sito em Agra Pequena, da freguesia de Esgueira, concelho de Aveiro, a confrontar a norte com caminho, a sul com Manuel Eusébio de Oliveira Vinagre, a nascente com Francisco Gonçalves Pereira, e a poente com herdeiros de Ana Angeja, descrito na Conservatória do Registo Predial de Aveiro sob o nº 9098/20110524, e inscrito na matriz rústica sob o artigo n.º 2588 (este artigo proveio do artigo rústico nº 5341 da freguesia de Esgueira, concelho de Aveiro).</div>
+					</div>
+					<button type="button" class="collapsible">Detalhes</button>
+					<div class="superDetails">
+						<!-- TEMPLATE DETAILS -->
+						<div>
+							<div><b>Imóvel</b></div>
+							<div>Subtipo: Rústico</div>
+						</div>
+						
+
+						<div>
+							<div><b>Rústico</b></div>
+							<div>Tipologia:não aplicável</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tipologia</b></div>
+							<div>não aplicável</div>
+						</div>
+						
+
+						<div>
+							<div><b>Área Privativa</b></div>
+							<div>50 m2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Área Dependente</b></div>
+							<div>50 m2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Área Total</b></div>
+							<div>50 m2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Descrição</b></div>
+							<div>Prédio rústico composto de terreno de cultura, com área de 50,00 m2, sito em Agra Pequena, da freguesia de Esgueira, concelho de Aveiro, a confrontar a norte com caminho, a sul com Manuel Eusébio de Oliveira Vinagre, a nascente com Francisco Gonçalves Pereira, e a poente com herdeiros de Ana Angeja, descrito na Conservatória do Registo Predial de Aveiro sob o nº 9098/20110524, e inscrito na matriz rústica sob o artigo n.º 2588 (este artigo proveio do artigo rústico nº 5341 da freguesia de Esgueira, concelho de Aveiro).</div>
+						</div>
+						
+
+						<div>
+							<div><b>Observações</b></div>
+							<div>a) As visitas serão agendadas com a Administradora Judicial e o insolvente; b) Com a apresentação da proposta, presume-se que o interessado tenha inspeccionado o imóvel e conhece as suas características, declinando-se qualquer responsabilidade pelo seu estado de conservação; c) Todos os custos inerentes à celebração da respectiva escritura de compra e venda serão suportados pelo adquirente; d) Nos termos das disposições conjugadas do no 6 do artigo 164.º, do Código da Insolvência e da Recuperação de Empresas, e nº 6 do artigo 833.º, do Código de Processo Civil, a presente venda está dispensada da apresentação do alvará de licença de utilização do prédio, pelo que, nos termos das mesmas disposições legais, constitui ónus do adquirente a respectiva legalização dos imóveis, se for caso disso; e) A escritura de compra e venda apenas será realizada com o apresentante da proposta e não com terceiros que este possa vir a indicar; f) A escritura de compra e venda será realizada em local, data e hora a designar pela Administradora da Insolvência.</div>
+						</div>
+						
+
+						<div>
+							<div><b>Ónus e Limitações</b></div>
+							<div>Tipo: outroNão se aplica</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tipo</b></div>
+							<div>Rústica</div>
+						</div>
+						
+
+						<div>
+							<div><b>Descrição Predial</b></div>
+							<div>Nº DA DESCRIÇÃO: 9098/20110524Fração:      Distrito: 01 - Aveiro     Concelho: 05 - Aveiro     Freguesia: 05 - EsgueiraARTIGOS: Nº do Artigo: 2588Tipo: Rústica     Fração:      Distrito: 01 - Aveiro     Concelho: 05 - Aveiro     Freguesia: 05 - Esgueira</div>
+						</div>
+						
+
+						<div>
+							<div><b>Nº DA DESCRIÇÃO</b></div>
+							<div>9098/20110524</div>
+						</div>
+						
+
+						<div>
+							<div><b>Fração</b></div>
+							<div>Distrito: 01 - Aveiro</div>
+						</div>
+						
+
+						<div>
+							<div><b>Distrito</b></div>
+							<div>Braga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Concelho</b></div>
+							<div>Esposende</div>
+						</div>
+						
+
+						<div>
+							<div><b>Freguesia</b></div>
+							<div>União das freguesias de Apúlia e Fão</div>
+						</div>
+						
+
+						<div>
+							<div><b>ARTIGOS</b></div>
+							<div>Tipo: Rústica     Fração:      Distrito: 01 - Aveiro     Concelho: 05 - Aveiro     Freguesia: 05 - Esgueira</div>
+						</div>
+						
+
+						<div>
+							<div><b>Nº do Artigo</b></div>
+							<div>2588</div>
+						</div>
+						
+
+						<div>
+							<div><b>Localização</b></div>
+							<div>Morada: Rua Agra Pequena</div>
+						</div>
+						
+
+						<div>
+							<div><b>Morada</b></div>
+							<div>Palácio da Justiça - Campo Mártires da Pátria - OSAE</div>
+						</div>
+						
+
+						<div>
+							<div><b>Código Postal</b></div>
+							<div>4740-102</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Latitude</b></div>
+							<div>41.47162313</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Longitude</b></div>
+							<div>-8.75212654</div>
+						</div>
+						
+
+						<div>
+							<div><b>Cerimonia de Encerramento</b></div>
+							<div>Data: 06-12-2022 14:30</div>
+						</div>
+						
+
+						<div>
+							<div><b>Data</b></div>
+							<div>06-12-2022 14:30</div>
+						</div>
+						
+
+						<div>
+							<div><b>Local</b></div>
+							<div>Porto - Palácio da Justiça</div>
+						</div>
+						
+
+						<div>
+							<div><b>Administrador Judicial</b></div>
+							<div>Ernestina R. Alves</div>
+						</div>
+						
+
+						<div>
+							<div><b>Dados do Processo</b></div>
+							<div>Processo: 3861/19.6T8AVR-verba nr.2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Processo</b></div>
+							<div>3861/19.6T8AVR-verba nr.2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tribunal</b></div>
+							<div>Comarca de Aveiro</div>
+						</div>
+						
+
+						<div>
+							<div><b>Unidade Orgânica</b></div>
+							<div>Aveiro - Juízo Comércio - Juiz 3</div>
+						</div>
+						
+
+						<div>
+							<div><b>Insolventes</b></div>
+							<div>A.Ângelo Seixas & Filhos, Lda.</div>
+						</div>
+						<!-- TEMPLATE DETAILS -->
+					</div>
+				</div>
+				
+
+				<div class="entry">
+					<div class="title">
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1029032022"><h3>Fracção Autónoma (Fão</h3></a>
+						<div class="summary">
+							<div>
+								<b>Imóvel</b>
+							</div>
+							<div>
+								<b>Distancia:</b>
+								<div class="bigDetail" style="color:rgb(54, 125, 24);">
+									0.2 km
+								</div>
+							</div>
+							<div>
+								<b>Lance actual:</b>
+								<div class="bigDetail">44000 €</div>
+							</div>
+						</div>
+					</div>
+					<div class="images">
+						<!-- TEMPLATE IMAGE -->
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1029032022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_90797/25102022173418_800.jpg" alt="Fracção Autónoma (Fão" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1029032022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_90797/25102022173421_800.jpg" alt="Fracção Autónoma (Fão" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1029032022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_90797/25102022173422_800.jpg" alt="Fracção Autónoma (Fão" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1029032022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_90797/25102022173424_800.jpg" alt="Fracção Autónoma (Fão" />
+							</div>
+						</a>
+						<!-- TEMPLATE IMAGE -->
+					</div>
+					<div class="details">
+						<div><b>Description:</b></div>
+						<div>VERBA Nº 1 - Fração autónoma designada pelas letras "BF", destinada a habitação, no primeiro andar direito, lado poente - Bloco 9, com aparcamento na parte coletiva da cave, do prédio urbano constituído em regime de propriedade horizontal, sito na Av. António Veiga, n° 175, freguesia de Fão, descrito na Conservatória do Registo Predial de Esposende sob o n° 633/19910808-BF e Inscrito na matriz urbana sob o art. 2237° - BF, da união das freguesias de Apúlia e Fão (este artigo teve origem no artigo urbano 1651-BF, da extinta freguesia de Fão).</div>
+					</div>
+					<button type="button" class="collapsible">Detalhes</button>
+					<div class="superDetails">
+						<!-- TEMPLATE DETAILS -->
+						<div>
+							<div><b>Imóvel</b></div>
+							<div>Subtipo: Apartamento</div>
+						</div>
+						
+
+						<div>
+							<div><b>Apartamento</b></div>
+							<div>Tipologia:T3</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tipologia</b></div>
+							<div>T3</div>
+						</div>
+						
+
+						<div>
+							<div><b>Área Privativa</b></div>
+							<div>585000 m2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Área Dependente</b></div>
+							<div>140000 m2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Área Total</b></div>
+							<div>4,721E+07 m2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Descrição</b></div>
+							<div>VERBA Nº 1 - Fração autónoma designada pelas letras "BF", destinada a habitação, no primeiro andar direito, lado poente - Bloco 9, com aparcamento na parte coletiva da cave, do prédio urbano constituído em regime de propriedade horizontal, sito na Av. António Veiga, n° 175, freguesia de Fão, descrito na Conservatória do Registo Predial de Esposende sob o n° 633/19910808-BF e Inscrito na matriz urbana sob o art. 2237° - BF, da união das freguesias de Apúlia e Fão (este artigo teve origem no artigo urbano 1651-BF, da extinta freguesia de Fão).</div>
+						</div>
+						
+
+						<div>
+							<div><b>Observações</b></div>
+							<div>Não obstante constar na caderneta matricial ora anexada que o bem imóvel apreendido se encontra localizado na Avª António Veiga, nº 175 - 1º andar - Fão, facto é que após deslocação ao imóvel constatou-se que o mesmo se situa na Rua das Rodas,  nº 82, 1º Dtº - Fão, motivo pelo qual se inseriu a localização correcta do bem no presente anúncio.</div>
+						</div>
+						
+
+						<div>
+							<div><b>Descrição Predial</b></div>
+							<div>Nº DA DESCRIÇÃO: 633Fração: BF     Distrito: 03 - Braga     Concelho: 06 - Esposende     Freguesia: 06 - FãoARTIGOS: Nº do Artigo: 2237Tipo: Urbana     Fração: BF     Distrito: 03 - Braga     Concelho: 06 - Esposende     Freguesia: 16 - União das freguesias de Apúlia e Fão</div>
+						</div>
+						
+
+						<div>
+							<div><b>Nº DA DESCRIÇÃO</b></div>
+							<div>633</div>
+						</div>
+						
+
+						<div>
+							<div><b>Fração</b></div>
+							<div>BF</div>
+						</div>
+						
+
+						<div>
+							<div><b>Distrito</b></div>
+							<div>Braga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Concelho</b></div>
+							<div>Esposende</div>
+						</div>
+						
+
+						<div>
+							<div><b>Freguesia</b></div>
+							<div>União das freguesias de Apúlia e Fão</div>
+						</div>
+						
+
+						<div>
+							<div><b>ARTIGOS</b></div>
+							<div>Tipo: Urbana     Fração: BF     Distrito: 03 - Braga     Concelho: 06 - Esposende     Freguesia: 16 - União das freguesias de Apúlia e Fão</div>
+						</div>
+						
+
+						<div>
+							<div><b>Nº do Artigo</b></div>
+							<div>2237</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tipo</b></div>
+							<div>Urbana</div>
+						</div>
+						
+
+						<div>
+							<div><b>Localização</b></div>
+							<div>Morada: Rua Rodas    Número: 82    Andar: 1º Dtº</div>
+						</div>
+						
+
+						<div>
+							<div><b>Morada</b></div>
+							<div>Palácio da Justiça - Campo Mártires da Pátria - OSAE</div>
+						</div>
+						
+
+						<div>
+							<div><b>Número</b></div>
+							<div>82</div>
+						</div>
+						
+
+						<div>
+							<div><b>Andar</b></div>
+							<div>1º Dtº</div>
+						</div>
+						
+
+						<div>
+							<div><b>Código Postal</b></div>
+							<div>4740-331</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Latitude</b></div>
+							<div>41.51460144</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Longitude</b></div>
+							<div>-8.77912111</div>
+						</div>
+						
+
+						<div>
+							<div><b>Cerimonia de Encerramento</b></div>
+							<div>Data: 13-12-2022 14:30</div>
+						</div>
+						
+
+						<div>
+							<div><b>Data</b></div>
+							<div>13-12-2022 14:30</div>
+						</div>
+						
+
+						<div>
+							<div><b>Local</b></div>
+							<div>Porto - Palácio da Justiça</div>
+						</div>
+						
+
+						<div>
+							<div><b>Administrador Judicial</b></div>
+							<div>Nídia Sousa Lamas</div>
+						</div>
+						
+
+						<div>
+							<div><b>Dados do Processo</b></div>
+							<div>Processo: 1449/13.4TJPRT</div>
+						</div>
+						
+
+						<div>
+							<div><b>Processo</b></div>
+							<div>1449/13.4TJPRT</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tribunal</b></div>
+							<div>Comarca do Porto</div>
+						</div>
+						
+
+						<div>
+							<div><b>Unidade Orgânica</b></div>
+							<div>Porto - Inst. Local - Secção Cível - J7</div>
+						</div>
+						
+
+						<div>
+							<div><b>Insolventes</b></div>
+							<div>Mateus Ramos Veiga Ferro</div>
+						</div>
+						<!-- TEMPLATE DETAILS -->
+					</div>
+				</div>
+				
+
+				<div class="entry">
+					<div class="title">
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1025832022"><h3>Rústico com 300,00m² em Marinhas, Esposende</h3></a>
+						<div class="summary">
+							<div>
+								<b>Imóvel</b>
+							</div>
+							<div>
+								<b>Distancia:</b>
+								<div class="bigDetail" style="color:rgb(69, 118, 27);">
+									5.2 km
+								</div>
+							</div>
+							<div>
+								<b>Lance actual:</b>
+								<div class="bigDetail">7058.83 €</div>
+							</div>
+						</div>
+					</div>
+					<div class="images">
+						<!-- TEMPLATE IMAGE -->
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1025832022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_90574/18102022180912_800.jpg" alt="Rústico com 300,00m² em Marinhas, Esposende" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1025832022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_90574/18102022180914_800.jpg" alt="Rústico com 300,00m² em Marinhas, Esposende" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1025832022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_90574/18102022180917_800.jpg" alt="Rústico com 300,00m² em Marinhas, Esposende" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/info.aspx?lo=LO1025832022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_90574/18102022180920_800.jpg" alt="Rústico com 300,00m² em Marinhas, Esposende" />
+							</div>
+						</a>
+						<!-- TEMPLATE IMAGE -->
+					</div>
+					<div class="details">
+						<div><b>Description:</b></div>
+						<div>Prédio rústico, terreno de cultura de regadio, com a área de 300,00 m², a confrontar a norte com caminho,
+a sul com rego foreiro, a nascente com António Capitão Abreu e a poente com Joaquim Silva Cardoso, sito no
+Lugar de Entre Rios, freguesia de Esposende, Marinhas e Gandra concelho de Esposende.
+Inscrito na matriz predial rústica sob o artigo 3939 e descrito na Conservatória do Registo Predial de Esposende
+sob o nº 4870.</div>
+					</div>
+					<button type="button" class="collapsible">Detalhes</button>
+					<div class="superDetails">
+						<!-- TEMPLATE DETAILS -->
+						<div>
+							<div><b>Imóvel</b></div>
+							<div>Subtipo: Rústico</div>
+						</div>
+						
+
+						<div>
+							<div><b>Rústico</b></div>
+							<div>Tipologia:não aplicável</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tipologia</b></div>
+							<div>não aplicável</div>
+						</div>
+						
+
+						<div>
+							<div><b>Área Privativa</b></div>
+							<div>300 m2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Área Dependente</b></div>
+							<div>0 m2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Área Total</b></div>
+							<div>300 m2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Descrição</b></div>
+							<div>Prédio rústico, terreno de cultura de regadio, com a área de 300,00 m², a confrontar a norte com caminho,
+a sul com rego foreiro, a nascente com António Capitão Abreu e a poente com Joaquim Silva Cardoso, sito no
+Lugar de Entre Rios, freguesia de Esposende, Marinhas e Gandra concelho de Esposende.
+Inscrito na matriz predial rústica sob o artigo 3939 e descrito na Conservatória do Registo Predial de Esposende
+sob o nº 4870.</div>
+						</div>
+						
+
+						<div>
+							<div><b>Observações</b></div>
+							<div>A presente descrição não dispensa a constatação presencial do estado de conservação do bem, sendo o agente de execução alheio a qualquer alteração das condições físicas do imóvel.
+
+A verba é vendida no estado físico, jurídico e documental em que se encontra. 
+
+Com a apresentação da proposta, presume-se que o interessado tenha visto o imóvel e conhece as suas características, declinando-se qualquer responsabilidade pelo seu estado de conservação.
+
+APENAS SERÃO ACEITES AS PROPOSTAS DE VALOR IGUAL OU SUPERIOR VALOR MÍNIMO. 
+ O «valor mínimo» é o valor a partir do qual o bem pode ser vendido e que corresponde, nos termos do n.º 2 do artigo 816.º do CPC, a 85 % do valor base.</div>
+						</div>
+						
+
+						<div>
+							<div><b>Descrição Predial</b></div>
+							<div>Nº DA DESCRIÇÃO: 4870Fração:      Distrito: 03 - Braga     Concelho: 06 - Esposende     Freguesia: 12 - MarinhasARTIGOS: Nº do Artigo: 3939Tipo: Rústica     Fração:      Distrito: 03 - Braga     Concelho: 06 - Esposende     Freguesia: 18 - União das freguesias de Esposende, Marinhas e Gandra</div>
+						</div>
+						
+
+						<div>
+							<div><b>Nº DA DESCRIÇÃO</b></div>
+							<div>4870</div>
+						</div>
+						
+
+						<div>
+							<div><b>Fração</b></div>
+							<div>Distrito: 03 - Braga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Distrito</b></div>
+							<div>Braga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Concelho</b></div>
+							<div>Esposende</div>
+						</div>
+						
+
+						<div>
+							<div><b>Freguesia</b></div>
+							<div>União das freguesias de Esposende, Marinhas e Gandra</div>
+						</div>
+						
+
+						<div>
+							<div><b>ARTIGOS</b></div>
+							<div>Tipo: Rústica     Fração:      Distrito: 03 - Braga     Concelho: 06 - Esposende     Freguesia: 18 - União das freguesias de Esposende, Marinhas e Gandra</div>
+						</div>
+						
+
+						<div>
+							<div><b>Nº do Artigo</b></div>
+							<div>3939</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tipo</b></div>
+							<div>Rústica</div>
+						</div>
+						
+
+						<div>
+							<div><b>Localização</b></div>
+							<div>Morada: Bairro Robaleira</div>
+						</div>
+						
+
+						<div>
+							<div><b>Morada</b></div>
+							<div>Palácio da Justiça - Campo Mártires da Pátria - OSAE</div>
+						</div>
+						
+
+						<div>
+							<div><b>Código Postal</b></div>
+							<div>4740-310</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Latitude</b></div>
+							<div>41.55894144</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Longitude</b></div>
+							<div>-8.79186358</div>
+						</div>
+						
+
+						<div>
+							<div><b>Cerimonia de Encerramento</b></div>
+							<div>Data: 13-12-2022 14:30</div>
+						</div>
+						
+
+						<div>
+							<div><b>Data</b></div>
+							<div>13-12-2022 14:30</div>
+						</div>
+						
+
+						<div>
+							<div><b>Local</b></div>
+							<div>Porto - Palácio da Justiça</div>
+						</div>
+						
+
+						<div>
+							<div><b>Agente de Execução</b></div>
+							<div>CRISTINA VIANA</div>
+						</div>
+						
+
+						<div>
+							<div><b>Dados do Processo</b></div>
+							<div>Processo: 6849/18.0T8VNF</div>
+						</div>
+						
+
+						<div>
+							<div><b>Processo</b></div>
+							<div>6849/18.0T8VNF</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tribunal</b></div>
+							<div>Comarca de Braga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Unidade Orgânica</b></div>
+							<div>V.N.Famalicão - Juízo Execução - Juiz 2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Executados</b></div>
+							<div>Glória de Jesus Peixoto Morgado na qualidade de herdeiro da executada MARIA DE LURDES PEIXOTO MORGADO</div>
+						</div>
+						<!-- TEMPLATE DETAILS -->
+					</div>
+				</div>
+				
+
+				<div class="entry">
+					<div class="title">
+						<a href="https://www.e-leiloes.pt/particular.aspx?np=NP634292022"><h3>Ford Mondeo 1.6 (BAP)</h3></a>
+						<div class="summary">
+							<div>
+								<b>Veículo</b>
+							</div>
+							<div>
+								<b>Distancia:</b>
+								<div class="bigDetail" style="color:rgb(85, 110, 30);">
+									10.6 km
+								</div>
+							</div>
+							<div>
+								<b>Lance actual:</b>
+								<div class="bigDetail">500 €</div>
+							</div>
+						</div>
+					</div>
+					<div class="images">
+						<!-- TEMPLATE IMAGE -->
+						<a href="https://www.e-leiloes.pt/particular.aspx?np=NP634292022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_68495/15022021164313_800.jpg" alt="Ford Mondeo 1.6 (BAP)" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/particular.aspx?np=NP634292022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_68495/15022021164308_800.jpg" alt="Ford Mondeo 1.6 (BAP)" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/particular.aspx?np=NP634292022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_68495/15022021164310_800.jpg" alt="Ford Mondeo 1.6 (BAP)" />
+							</div>
+						</a>
+						
+
+						<a href="https://www.e-leiloes.pt/particular.aspx?np=NP634292022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/verba_68495/15022021164311_800.jpg" alt="Ford Mondeo 1.6 (BAP)" />
+							</div>
+						</a>
+						<!-- TEMPLATE IMAGE -->
+					</div>
+					<div class="details">
+						<div><b>Description:</b></div>
+						<div>Matrícula: 49-34-CP
+Marca: Ford;
+Modelo: Mondeo 1.6 (BAP)
+Categoria: Ligeiro
+Tipo: Passageiros
+Ano: 1993 
+Combustível: gasolina
+Cor: cinzento
+Cilindrada: 1597</div>
+					</div>
+					<button type="button" class="collapsible">Detalhes</button>
+					<div class="superDetails">
+						<!-- TEMPLATE DETAILS -->
+						<div>
+							<div><b>Veículo</b></div>
+							<div>Subtipo: Ligeiro Passageiros</div>
+						</div>
+						
+
+						<div>
+							<div><b>Ligeiro Passageiros</b></div>
+							<div>Matrícula:49-34-CP</div>
+						</div>
+						
+
+						<div>
+							<div><b>Matrícula</b></div>
+							<div>49-34-CP</div>
+						</div>
+						
+
+						<div>
+							<div><b>Descrição</b></div>
+							<div>Matrícula: 49-34-CP
+Marca: Ford;
+Modelo: Mondeo 1.6 (BAP)
+Categoria: Ligeiro
+Tipo: Passageiros
+Ano: 1993 
+Combustível: gasolina
+Cor: cinzento
+Cilindrada: 1597</div>
+						</div>
+						
+
+						<div>
+							<div><b>Observações</b></div>
+							<div>Local de depósito: RUA MONTE GUILHETA, Nº 2, ANTAS, ESPOSENDE</div>
+						</div>
+						
+
+						<div>
+							<div><b>Localização</b></div>
+							<div>Morada: Antas    Número: 2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Morada</b></div>
+							<div>Antas</div>
+						</div>
+						
+
+						<div>
+							<div><b>Número</b></div>
+							<div>2</div>
+						</div>
+						
+
+						<div>
+							<div><b>Código Postal</b></div>
+							<div>4740-013</div>
+						</div>
+						
+
+						<div>
+							<div><b>Distrito</b></div>
+							<div>Braga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Concelho</b></div>
+							<div>Esposende</div>
+						</div>
+						
+
+						<div>
+							<div><b>Freguesia</b></div>
+							<div>Antas</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Latitude</b></div>
+							<div>41.60733804</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Longitude</b></div>
+							<div>-8.79298824</div>
+						</div>
+						
+
+						<div>
+							<div><b>Agente de Execução</b></div>
+							<div>ISABEL VAZ MIRANDA</div>
+						</div>
+						
+
+						<div>
+							<div><b>Dados do Processo</b></div>
+							<div>Processo: 2761/13.8TBBRG</div>
+						</div>
+						
+
+						<div>
+							<div><b>Processo</b></div>
+							<div>2761/13.8TBBRG</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tribunal</b></div>
+							<div>Comarca de Braga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Unidade Orgânica</b></div>
+							<div>V.N.Famalicão - Juízo Execução - Juiz 3</div>
+						</div>
+						
+
+						<div>
+							<div><b>Executados</b></div>
+							<div>Sónia Cristina Pinto Brito</div>
+						</div>
+						<!-- TEMPLATE DETAILS -->
+					</div>
+				</div>
+				
+
+				<div class="entry">
+					<div class="title">
+						<a href="https://www.e-leiloes.pt/particular.aspx?np=NP609792022"><h3>QUINHÃO HEREDITÁRIO</h3></a>
+						<div class="summary">
+							<div>
+								<b>Direito</b>
+							</div>
+							<div>
+								<b>Distancia:</b>
+								<div class="bigDetail" style="color:rgb(61, 122, 25);">
+									2.6 km
+								</div>
+							</div>
+							<div>
+								<b>Lance actual:</b>
+								<div class="bigDetail">642.5 €</div>
+							</div>
+						</div>
+					</div>
+					<div class="images">
+						<!-- TEMPLATE IMAGE -->
+						<a href="https://www.e-leiloes.pt/particular.aspx?np=NP609792022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/_Automaticas/direitos_800.jpg" alt="QUINHÃO HEREDITÁRIO" />
+							</div>
+						</a>
+						<!-- TEMPLATE IMAGE -->
+					</div>
+					<div class="details">
+						<div><b>Description:</b></div>
+						<div>Quinhão hereditário que a executada, Maria Sameiro Magalhães Losa Pereira detém na herança indivisa aberta por óbito de Amélia Leontina Gonçalves Magalhães, à qual corresponde o NIF: 709 404 450.</div>
+					</div>
+					<button type="button" class="collapsible">Detalhes</button>
+					<div class="superDetails">
+						<!-- TEMPLATE DETAILS -->
+						<div>
+							<div><b>Direito</b></div>
+							<div>Subtipo: Herança</div>
+						</div>
+						
+
+						<div>
+							<div><b>Herança</b></div>
+							<div>Descrição:Quinhão hereditário que a executada, Maria Sameiro Magalhães Losa Pereira detém na herança indivisa aberta por óbito de Amélia Leontina Gonçalves Magalhães, à qual corresponde o NIF: 709 404 450.</div>
+						</div>
+						
+
+						<div>
+							<div><b>Descrição</b></div>
+							<div>Quinhão hereditário que a executada, Maria Sameiro Magalhães Losa Pereira detém na herança indivisa aberta por óbito de Amélia Leontina Gonçalves Magalhães, à qual corresponde o NIF: 709 404 450.</div>
+						</div>
+						
+
+						<div>
+							<div><b>Observações</b></div>
+							<div>Faz parte da herança: Prédio urbano, sito na Avenida Doutor Henrique Barros Lima, n.º 23A, Esposende, inscrito na matriz com o artigo 361 e descrito na competente Conservatória sob a descrição 1046. Beneficiários da Herança: 6 descendentes. O bem indicado previsivelmente integra o acervo hereditário.</div>
+						</div>
+						
+
+						<div>
+							<div><b>Localização</b></div>
+							<div>Morada: Avenida Doutor Henrique Barros Lima</div>
+						</div>
+						
+
+						<div>
+							<div><b>Morada</b></div>
+							<div>Avenida Doutor Henrique Barros Lima</div>
+						</div>
+						
+
+						<div>
+							<div><b>Código Postal</b></div>
+							<div>4740-203</div>
+						</div>
+						
+
+						<div>
+							<div><b>Distrito</b></div>
+							<div>Braga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Concelho</b></div>
+							<div>Esposende</div>
+						</div>
+						
+
+						<div>
+							<div><b>Freguesia</b></div>
+							<div>União das freguesias de Esposende, Marinhas e Gandra</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Latitude</b></div>
+							<div>41.53656250</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Longitude</b></div>
+							<div>-8.78170525</div>
+						</div>
+						
+
+						<div>
+							<div><b>Agente de Execução</b></div>
+							<div>ÂNGELA CASTRO LOPES</div>
+						</div>
+						
+
+						<div>
+							<div><b>Dados do Processo</b></div>
+							<div>Processo: 5484/17.5T8VNF</div>
+						</div>
+						
+
+						<div>
+							<div><b>Processo</b></div>
+							<div>5484/17.5T8VNF</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tribunal</b></div>
+							<div>Comarca de Braga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Unidade Orgânica</b></div>
+							<div>V.N.Famalicão - Juízo Execução - Juiz 1</div>
+						</div>
+						
+
+						<div>
+							<div><b>Executados</b></div>
+							<div>José Manuel Gomes Monteiro Pereira</div>
+						</div>
+						<!-- TEMPLATE DETAILS -->
+					</div>
+				</div>
+				
+
+				<div class="entry">
+					<div class="title">
+						<a href="https://www.e-leiloes.pt/particular.aspx?np=NP610882022"><h3>Quinhão hereditário</h3></a>
+						<div class="summary">
+							<div>
+								<b>Direito</b>
+							</div>
+							<div>
+								<b>Distancia:</b>
+								<div class="bigDetail" style="color:rgb(95, 106, 32);">
+									13.8 km
+								</div>
+							</div>
+							<div>
+								<b>Lance actual:</b>
+								<div class="bigDetail">10250 €</div>
+							</div>
+						</div>
+					</div>
+					<div class="images">
+						<!-- TEMPLATE IMAGE -->
+						<a href="https://www.e-leiloes.pt/particular.aspx?np=NP610882022">
+							<div class="image">
+								<img src="https://www.e-leiloes.pt/files/Verbas_Fotos/_Automaticas/direitos_800.jpg" alt="Quinhão hereditário" />
+							</div>
+						</a>
+						<!-- TEMPLATE IMAGE -->
+					</div>
+					<div class="details">
+						<div><b>Description:</b></div>
+						<div>Quinhão hereditário do executado José Maria Lopes Loureiro, na herança aberta por óbito de sua mãe Maria de Jesus Lopes Loureiro, com o NIF. 705426475.</div>
+					</div>
+					<button type="button" class="collapsible">Detalhes</button>
+					<div class="superDetails">
+						<!-- TEMPLATE DETAILS -->
+						<div>
+							<div><b>Direito</b></div>
+							<div>Subtipo: Herança</div>
+						</div>
+						
+
+						<div>
+							<div><b>Herança</b></div>
+							<div>Descrição:Quinhão hereditário do executado José Maria Lopes Loureiro, na herança aberta por óbito de sua mãe Maria de Jesus Lopes Loureiro, com o NIF. 705426475.</div>
+						</div>
+						
+
+						<div>
+							<div><b>Descrição</b></div>
+							<div>Quinhão hereditário do executado José Maria Lopes Loureiro, na herança aberta por óbito de sua mãe Maria de Jesus Lopes Loureiro, com o NIF. 705426475.</div>
+						</div>
+						
+
+						<div>
+							<div><b>Observações</b></div>
+							<div>De acordo com a participação do imposto de selo apresentada, verifica-se que são 3(três) os co-herdeiros, e fazem parte previsivelmente do acervo da herança, sem prejuízo de outros bens que possam existir, mas que não foram devidamente participados, os seguintes bens: 
+
+a) – 1111/10000 do prédio urbano sito no lugar da Areia, da união de freguesias de Apúlia e Fão, do concelho de Esposende, inscrito na matriz predial urbana da referida freguesia sob o artº 1196, com um valor patrimonial determinado no ano de 2020 de 114.336,33€; 
+b) – 1111/10000 do prédio rústico, sito no Facho, inscrito na matriz rústica da união de freguesias de Apúlia e Fão, do concelho de Esposende, sob o artº 3467.º, com a área total de 100m2, e um valor patrimonial determinado no ano de 1989 de 228,25€.
+**
+
+Negociação particular - Importante - O prazo para a conclusão da negociação particular é meramente indicativo, ou seja, a negociação particular poderá ser concluído antes do prazo indicado pelo site e-leiloes. Manifeste o seu interesse, mediante a apresentação de proposta, no imediato (é inútil aguardar pelos últimos dias, uma vez que a negociação particular até pode concluir-se antes). Caso seja apresentada proposta no valor mínimo da venda (salvo se houver outra de valor superior) a negociação particular é encerrada, iniciando-se as diligências devidas com vista à aceitação dessa proposta.  Após apresentada proposta, a mesma não pode ser retirada.</div>
+						</div>
+						
+
+						<div>
+							<div><b>Localização</b></div>
+							<div>Morada: Rua Formiga    Número: 104    Andar: 25</div>
+						</div>
+						
+
+						<div>
+							<div><b>Morada</b></div>
+							<div>Rua Formiga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Número</b></div>
+							<div>104</div>
+						</div>
+						
+
+						<div>
+							<div><b>Andar</b></div>
+							<div>25</div>
+						</div>
+						
+
+						<div>
+							<div><b>Código Postal</b></div>
+							<div>4750-159</div>
+						</div>
+						
+
+						<div>
+							<div><b>Distrito</b></div>
+							<div>Braga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Concelho</b></div>
+							<div>Barcelos</div>
+						</div>
+						
+
+						<div>
+							<div><b>Freguesia</b></div>
+							<div>Arcozelo</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Latitude</b></div>
+							<div>41.54183838</div>
+						</div>
+						
+
+						<div>
+							<div><b>GPS Longitude</b></div>
+							<div>-8.61877781</div>
+						</div>
+						
+
+						<div>
+							<div><b>Agente de Execução</b></div>
+							<div>FLORBELA DIAS</div>
+						</div>
+						
+
+						<div>
+							<div><b>Dados do Processo</b></div>
+							<div>Processo: 3590/14.7T8VNF</div>
+						</div>
+						
+
+						<div>
+							<div><b>Processo</b></div>
+							<div>3590/14.7T8VNF</div>
+						</div>
+						
+
+						<div>
+							<div><b>Tribunal</b></div>
+							<div>Comarca de Braga</div>
+						</div>
+						
+
+						<div>
+							<div><b>Unidade Orgânica</b></div>
+							<div>V.N.Famalicão - Juízo Execução - Juiz 1</div>
+						</div>
+						
+
+						<div>
+							<div><b>Executados</b></div>
+							<div>José Maria Lopes Loureiro</div>
+						</div>
+						<!-- TEMPLATE DETAILS -->
+					</div>
+				</div>
+				<!-- TEMPLATE ENTRY -->
+			</div>
+		</div>
+	</body>
+</html>
